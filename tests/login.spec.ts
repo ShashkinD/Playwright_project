@@ -18,6 +18,9 @@ test('Log in with correct credentials', async ({ page }) => {
 
 test('Checking that the login form displayed', async ({ page }) => {
   const loginPage = new LoginPage(page);
+  await test.step('Opening login page', async () => {
+    await goto(loginPage);
+  })
   await test.step('Checking form elements to be displayed', async () =>{
     await expect(loginPage.emailField).toBeVisible()
     await expect(loginPage.passwordField).toBeVisible()
