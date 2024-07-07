@@ -3,7 +3,7 @@ import { LoginPage } from '../src/pages/login.page';
 import { users } from '../src/users';
 import { goto } from '../src/navigation';
 
-test('Login with correct credentials', async ({ page }) => {
+test('Log in with correct credentials', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await test.step('Opening login page', async () => {
     await goto(loginPage);
@@ -16,7 +16,16 @@ test('Login with correct credentials', async ({ page }) => {
   })
 });
 
-test('Login with incorrect password', async ({ page }) => {
+test('Checking that the login form displayed', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  await test.step('Checking form elements to be displayed', async () =>{
+    await expect(loginPage.emailField).toBeVisible()
+    await expect(loginPage.passwordField).toBeVisible()
+    await expect(loginPage.loginButton).toBeVisible()
+  })
+});
+
+test('Log in with incorsrect password', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await test.step('Opening login page', async () => {
     await goto(loginPage);
