@@ -6,7 +6,8 @@ import { goto } from '../src/navigation';
 test('Log in with correct credentials', async ({ page }) => {
   const loginPage = new LoginPage(page);
   await test.step('Opening login page', async () => {
-    await goto(loginPage);
+    await goto(loginPage); 
+
   })
   await test.step('Log in as a test user', async () =>{
     await loginPage.login(users.testUser);
